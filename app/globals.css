@@ -127,3 +127,14 @@
     @apply font-sans;
     }
 }
+
+
+body {
+  background: #222222;
+}
+
+/* custome text color start */
+.primary-text {
+  color: #C93C3F;
+}
+/* custome text color end */
