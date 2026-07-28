@@ -126,7 +126,7 @@ export function Footer({
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-800" />
+        <div className="border-t border-gray-500" />
 
         {/* Bottom Section */}
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center pt-8 gap-4">
