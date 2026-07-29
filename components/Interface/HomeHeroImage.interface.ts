@@ -1,7 +1,7 @@
-import type { StaticImageData } from 'next/image'
+import type { StaticImageData } from "next/image";
 
 export interface HeroImage {
-  id: number
-  src: string | StaticImageData
-  alt: string
+  id: number;
+  src: string | StaticImageData;
+  alt: string;
 }
