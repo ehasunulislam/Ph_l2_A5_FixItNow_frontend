@@ -10,9 +10,9 @@ export default function CTASection({
   onSecondaryClick,
 }: CTASectionProps) {
   return (
-    <section className="py-20 px-4">
+    <section className="py-20 px-4 bg-zinc-900">
       <div className="max-w-6xl mx-auto">
-        <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-[#353535] py-20 px-8">
+        <div className="relative overflow-hidden rounded-[30px] border border-white/10 py-20 px-8">
 
           {/* LEFT GLOW */}
           <div
