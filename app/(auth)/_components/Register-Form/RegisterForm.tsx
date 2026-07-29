@@ -7,6 +7,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { registerAction } from '../../_action/registerAction';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 const RegisterForm = () => {
   const { register, handleSubmit, setValue, formState: { errors, isSubmitting },} = useForm<RegisterFormValues>({
@@ -21,8 +24,18 @@ const RegisterForm = () => {
     },
   });
 
+  const router = useRouter();
+    // onsubmit 
     const onSubmit = async (data: RegisterFormValues) => {
-        console.log(data);
+        try{
+            const result = await registerAction(data);
+            toast.success(result.message || "Registration successful");
+
+            router.push("/");
+        }
+        catch(err) {
+            toast.error(err instanceof Error ? err.message : "Something went wrong")
+        }
     };
 
     const inputClass ="h-12 rounded-xl border border-white/10 bg-[#262626] text-white placeholder:text-gray-400 focus-visible:ring-1 focus-visible:ring-red-500 focus-visible:border-red-500";
