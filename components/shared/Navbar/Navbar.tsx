@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import Image from 'next/image'
+import Userdropdown from '../UserDropdown/Userdropdown'
 
 export interface NavItem {
   label: string
@@ -11,13 +12,18 @@ export interface NavItem {
 }
 
 interface NavbarProps {
-  logo?: React.ReactNode
-  navItems?: NavItem[]
-  onLoginClick?: () => void
-  onRegisterClick?: () => void
+  user: {
+    id: string;
+    name: string;
+    email: string;
+    profileImage?: string;
+  } | null;
+
+  navItems?: NavItem[];
 }
 
 export function Navbar({
+  user,
   navItems = [
     { label: 'Home', href: '/' },
     { label: 'Services', href: '/services' },
@@ -62,13 +68,16 @@ export function Navbar({
           </div>
 
           {/* Right side buttons */}
-          <div className="hidden md:flex items-center space-x-4">
+         {user ? (
+            <Userdropdown user={user} />
+          ) : (
             <Link
               href="/login"
-              className="text-white bg-[#C93C3F] border-0 px-6 py-3 rounded-[10px]">
+              className="rounded-lg bg-[#C93C3F] px-6 py-3 text-white"
+            >
               Login
             </Link>
-          </div>
+          )}
 
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -104,8 +113,8 @@ export function Navbar({
             </div>
             <div className="flex flex-col gap-2 mt-4 px-3">
                 <Link
-                href="/login"
-                className="text-white bg-[#C93C3F] border-0 px-6 py-3 rounded-[10px]"
+                  href="/login"
+                  className="text-white bg-[#C93C3F] border-0 px-6 py-3 rounded-[10px]"
                 >
                     Login
                 </Link>
