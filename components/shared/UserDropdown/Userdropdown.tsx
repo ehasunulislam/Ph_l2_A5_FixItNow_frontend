@@ -1,10 +1,7 @@
-"use client";
-
 import Link from "next/link";
 import {
   CalendarCheck,
   LayoutDashboard,
-  LogOut,
   User,
 } from "lucide-react";
 
@@ -20,6 +17,7 @@ import {
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import Logout from "@/components/service/logout";
 
 interface UserDropdownProps {
   user: {
@@ -32,11 +30,6 @@ interface UserDropdownProps {
 }
 
 const UserDropdown = ({ user }: UserDropdownProps) => {
-  const handleLogout = () => {
-    console.log("logout");
-    // logout action
-  };
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
@@ -108,15 +101,8 @@ const UserDropdown = ({ user }: UserDropdownProps) => {
           <DropdownMenuSeparator />
 
           <DropdownMenuItem
-            className="text-red-500"
-            onClick={handleLogout}
-            render={
-              <div className="flex w-full items-center gap-2 cursor-pointer">
-                <LogOut size={18} />
-                Logout
-              </div>
-            }
-          />
+            render={<Logout />}
+           />
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
