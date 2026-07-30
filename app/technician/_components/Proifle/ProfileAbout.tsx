@@ -11,8 +11,8 @@ interface Props {
 
 const ProfileAbout = ({ technician }: Props) => {
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
-      <div className="rounded-2xl border border-white/10 p-6 text-white max-w-2xl">
+    <section className="">
+      <div className="rounded-2xl border border-white/10 p-6 text-white">
         <h2 className="mb-6 text-2xl font-bold">About</h2>
 
         <p className="leading-8 text-gray-300">
