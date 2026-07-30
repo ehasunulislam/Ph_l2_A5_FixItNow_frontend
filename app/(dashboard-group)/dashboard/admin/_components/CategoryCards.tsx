@@ -1,6 +1,6 @@
 "use client";
 
-import { Pencil, CalendarDays } from "lucide-react";
+import { CalendarDays } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import CreateCategoryModal from "./CreateCategoryModal";
@@ -78,13 +78,13 @@ const CategoryCards = ({ categories }: Props) => {
                 {new Date(category.createdAt).toLocaleDateString()}
               </div>
 
-              <Button
+              {/* <Button
                 variant="outline"
                 size="sm"
                 className="border-white/10 bg-transparent text-white hover:bg-[#C93C3F] hover:text-white cursor-pointer"
               >
                 <Pencil size={15} />
-              </Button>
+              </Button> */}
             </div>
           </div>
         ))}
