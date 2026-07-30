@@ -11,8 +11,6 @@ interface Props {
       address: string;
     };
     isVerified: boolean;
-    bio: string;
-    location: string;
     averageRating: number;
     totalReviews: number;
     experience: number;
@@ -50,7 +48,7 @@ const ProfileHeader = ({ technician }: Props) => {
               </div>
 
               <p className="mt-2 text-gray-300">
-                Professional Technician
+                Worker in Fixit-now
               </p>
 
               <div className="mt-3 flex flex-wrap gap-5 text-sm text-gray-400">
