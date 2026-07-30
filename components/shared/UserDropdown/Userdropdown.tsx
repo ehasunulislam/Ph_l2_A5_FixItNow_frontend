@@ -72,7 +72,7 @@ const UserDropdown = ({ user }: UserDropdownProps) => {
             <DropdownMenuItem
               render={
                 <Link
-                  href={`/dashboard/admin/categories`}
+                  href="/dashboard/admin/categories"
                   className="flex w-full items-center gap-2 cursor-pointer"
                 >
                   <User size={18} />

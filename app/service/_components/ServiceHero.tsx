@@ -2,7 +2,7 @@ import React from 'react'
 
 const ServiceHero = () => {
   return (
-    <section className="relative overflow-hidden bg-[#141212]">
+    <section className="relative overflow-hidden bg-[#141212] mt-5">
       {/* Background Layer */}
       <div className="absolute inset-0">
         {/* Soft brown glow */}

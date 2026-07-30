@@ -13,7 +13,7 @@ export const getAllCategories = async () => {
       headers: {
         Authorization: token ?? "",
       },
-      cache: "no-store",
+      // cache: "no-store",
     }
   );
 
