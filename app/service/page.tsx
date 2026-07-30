@@ -1,12 +1,14 @@
 import React from 'react'
 import ServiceHero from './_components/ServiceHero'
-// import ServiceCard from './_components/ServiceCard'
+import ServiceGrid from './_components/ServiceGrid'
+
+
 
 const page = () => {
   return (
     <div>
       <ServiceHero />
-      {/* <ServiceCard /> */}
+      <ServiceGrid />
     </div>
   )
 }

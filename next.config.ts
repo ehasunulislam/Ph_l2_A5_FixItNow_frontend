@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "static0.srcdn.com",
       },
+      {
+        protocol: "https",
+        hostname: "pyxis.nymag.com",
+      },
     ],
   },
 };

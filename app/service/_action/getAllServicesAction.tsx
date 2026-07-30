@@ -1,37 +1,6 @@
-// "use server";
-
-// export const getAllServices = async (searchParams: {
-//     page?: number;
-//     searchTerm?: string;
-//     category?: string;
-//   }
-// ) => {
-//   const params = new URLSearchParams();
-
-//   if (searchParams.page)
-//     params.append("page", searchParams.page.toString());
-
-//   if (searchParams.searchTerm)
-//     params.append("searchTerm", searchParams.searchTerm);
-
-//   if (searchParams.category)
-//     params.append("category", searchParams.category);
-
-//   const res = await fetch(
-//     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/services?${params.toString()}`,
-//     {
-//       next: {
-//         revalidate: 60,
-//       },
-//     }
-//   );
-
-//   return res.json();
-// };
-
 "use server";
 
-export const getAllServices = async () => {
+export const getAllServicesAction = async () => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/services`,
     {
