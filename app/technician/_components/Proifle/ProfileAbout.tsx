@@ -1,47 +1,78 @@
-import { BadgeDollarSign, MapPin } from 'lucide-react';
-import React from 'react'
+import About from "./About";
 
 interface Props {
   technician: {
     bio: string | null;
     location: string;
     hourlyRate: string;
+    
+    reviews: {
+      id: string;
+      booking: {
+        id: string;
+        bookingDate: string;
+        address: string;
+        status: string;
+        note: string;
+      };
+    }[];
   };
 }
 
 const ProfileAbout = ({ technician }: Props) => {
   return (
-    <section className="">
-      <div className="rounded-2xl border border-white/10 p-6 text-white">
-        <h2 className="mb-6 text-2xl font-bold">About</h2>
+    <section>
+      <About technician={technician} />
 
-        <p className="leading-8 text-gray-300">
-          {technician.bio ||
-            "This technician hasn't added a bio yet."}
-        </p>
+      {/* booking section */}
+      <div className="mt-10">
+        <h2 className="mb-5 text-2xl font-bold text-white">
+          Recent Completed Jobs
+        </h2>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
+        <div className="space-y-4">
+          {technician.reviews.length > 0 ? (
+            technician.reviews.map((review) => (
+              <div
+                key={review.booking.id}
+                className="rounded-xl border border-white/10 p-5"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="font-semibold text-white">
+                      Booking #{review.booking.id.slice(0, 8)}
+                    </h3>
 
-          <div className="flex items-center gap-3 rounded-xl bg-[#262626] p-4">
-            <MapPin className="text-[#C93C3F]" />
-            <div>
-              <p className="text-sm text-gray-400">Service Location</p>
-              <p className="font-semibold">
-                {technician.location || "Not specified"}
-              </p>
+                    <p className="mt-1 text-sm text-gray-400">
+                      {review.booking.address}
+                    </p>
+
+                    <p className="mt-1 text-sm text-gray-500">
+                      {new Date(
+                        review.booking.bookingDate,
+                      ).toLocaleDateString()}
+                    </p>
+                  </div>
+
+                  <span className="rounded-full bg-green-500/15 px-3 py-1 text-sm font-medium text-green-400">
+                    {review.booking.status}
+                  </span>
+                </div>
+
+                {review.booking.note && (
+                  <div className="mt-4 rounded-lg bg-[#1b1b1b] p-3">
+                    <p className="text-sm text-gray-300">
+                      {review.booking.note}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))
+          ) : (
+            <div className="rounded-xl border border-dashed border-white/10 p-8 text-center text-gray-400">
+              No completed jobs yet.
             </div>
-          </div>
-
-          <div className="flex items-center gap-3 rounded-xl bg-[#262626] p-4">
-            <BadgeDollarSign className="text-[#C93C3F]" />
-            <div>
-              <p className="text-sm text-gray-400">Hourly Rate</p>
-              <p className="font-semibold">
-                ৳{technician.hourlyRate}/hour
-              </p>
-            </div>
-          </div>
-
+          )}
         </div>
       </div>
     </section>
