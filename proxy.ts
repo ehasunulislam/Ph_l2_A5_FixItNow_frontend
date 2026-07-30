@@ -53,6 +53,7 @@ export const config = {
     "/dashboard/admin-dashboard/:path*",
     "/dashboard/technician-dashboard/:path*",
     "/dashboard/customer-dashboard/:path*",
-    "/dashboard/technician/:path*"
+    "/dashboard/technician/:path*",
+    "/service"
   ],
 };

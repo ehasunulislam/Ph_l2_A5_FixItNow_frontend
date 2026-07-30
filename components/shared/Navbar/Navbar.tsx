@@ -26,7 +26,7 @@ export function Navbar({
   user,
   navItems = [
     { label: 'Home', href: '/' },
-    { label: 'Services', href: '/services' },
+    { label: 'Services', href: '/service' },
   ],
 }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false)
