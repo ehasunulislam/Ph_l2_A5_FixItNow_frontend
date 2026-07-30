@@ -2,16 +2,11 @@
 
 import { Badge } from "@/components/ui/badge";
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useState } from "react";
+import UpdateUserStatusModal from "./StatusModal";
 
 interface User {
   id: string;
@@ -29,6 +24,8 @@ interface Props {
 }
 
 const GetAllUsers = ({ users }: Props) => {
+    const [open, setOpen] = useState(false);
+    const [selectedUser, setSelectedUser] = useState<User | null>(null);
   return (
     <div className="rounded-xl border border-white/10 p-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
 
@@ -116,7 +113,11 @@ const GetAllUsers = ({ users }: Props) => {
                 </TableCell>
 
                 <TableCell className="text-right">
-                  <button className="bg-[#cff81bcc] text-black p-2 rounded-[10px] cursor-pointer">
+                  <button className="bg-[#cff81bcc] text-black p-2 rounded-[10px] cursor-pointer"   
+                    onClick={() => {
+                        setSelectedUser(user);
+                        setOpen(true);
+                    }}>
                     Edit
                   </button>
                 </TableCell>
@@ -124,6 +125,14 @@ const GetAllUsers = ({ users }: Props) => {
             ))}
           </TableBody>
         </Table>
+
+        {selectedUser && (
+            <UpdateUserStatusModal
+                open={open}
+                setOpen={setOpen}
+                user={selectedUser}
+            />
+        )}
       </div>
     </div>
   );
