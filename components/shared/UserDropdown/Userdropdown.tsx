@@ -89,7 +89,7 @@ const UserDropdown = ({ user }: UserDropdownProps) => {
           <DropdownMenuItem
             render={
               <Link
-                href="/profile"
+                href={`/technician/${user.id}`}
                 className="flex w-full items-center gap-2"
               >
                 <User size={18} />

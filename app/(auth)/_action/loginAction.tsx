@@ -3,9 +3,7 @@
 import { cookies } from "next/headers";
 import { LoginFormValues } from "../schemas/login.schema";
 
-export const loginAction = async (
-  payload: LoginFormValues
-) => {
+export const loginAction = async (payload: LoginFormValues) => {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/login`,
     {
