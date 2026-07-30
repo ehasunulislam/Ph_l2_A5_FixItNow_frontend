@@ -47,7 +47,7 @@ const ServiceCard = ({ service }: Props) => {
           {service.category.icon} {service.category.name}
         </span>
 
-        <h2 className="text-xl font-bold text-white">
+        <h2 className="text-sm font-bold text-white">
           {service.title}
         </h2>
 
