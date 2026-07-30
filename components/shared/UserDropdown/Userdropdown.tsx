@@ -19,10 +19,10 @@ interface UserDropdownProps {
 
 const UserDropdown = ({ user }: UserDropdownProps) => {
 
-  const dashboardPath =   user.role === "ADMIN"  ? "/dashboard/admin-dashboard"
+  const dashboardPath =   user.role === "ADMIN"  ? "/dashboard/admin"
     : user.role === "TECHNICIAN"
-    ? "/dashboard/technician-dashboard"
-    : "/dashboard/customer-dashboard";
+    ? "/dashboard/technician"
+    : "/dashboard/customer";
 
   return (
     <DropdownMenu>
@@ -67,6 +67,20 @@ const UserDropdown = ({ user }: UserDropdownProps) => {
               </Link>
             }
           />
+
+          {user?.role === "ADMIN" && (
+            <DropdownMenuItem
+              render={
+                <Link
+                  href={`/dashboard/admin/categories`}
+                  className="flex w-full items-center gap-2 cursor-pointer"
+                >
+                  <User size={18} />
+                  Services
+                </Link>
+              }
+            />
+          )}
 
           {user?.role === "TECHNICIAN" && (
             <DropdownMenuItem

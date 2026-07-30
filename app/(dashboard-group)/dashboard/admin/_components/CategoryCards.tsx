@@ -2,6 +2,8 @@
 
 import { Pencil, CalendarDays } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import CreateCategoryModal from "./CreateCategoryModal";
 
 interface Category {
   id: string;
@@ -17,6 +19,7 @@ interface Props {
 }
 
 const CategoryCards = ({ categories }: Props) => {
+    const [open, setOpen] = useState(false);
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
       {/* Header */}
@@ -31,9 +34,14 @@ const CategoryCards = ({ categories }: Props) => {
           </p>
         </div>
 
-        <Button className="bg-[#C93C3F] hover:bg-[#a92e31]">
+        <Button className="bg-[#C93C3F] hover:bg-[#a92e31]" onClick={() => setOpen(true)}>
           + Add Category
         </Button>
+
+        <CreateCategoryModal
+            open={open}
+            setOpen={setOpen}
+        />
       </div>
 
       {/* Cards */}
