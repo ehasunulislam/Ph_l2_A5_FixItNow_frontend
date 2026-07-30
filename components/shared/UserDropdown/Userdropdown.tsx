@@ -1,9 +1,5 @@
 import Link from "next/link";
-import {
-  CalendarCheck,
-  LayoutDashboard,
-  User,
-} from "lucide-react";
+import { LayoutDashboard, User} from "lucide-react";
 
 import {
   DropdownMenu,
@@ -25,11 +21,17 @@ interface UserDropdownProps {
     name: string;
     email: string;
     profileImage?: string;
-    role?: "CUSTOMER" | "TECHNICIAN";
+    role?: "CUSTOMER" | "TECHNICIAN" | "ADMIN";
   };
 }
 
 const UserDropdown = ({ user }: UserDropdownProps) => {
+
+  const dashboardPath =   user.role === "ADMIN"  ? "/dashboard/admin-dashboard"
+    : user.role === "TECHNICIAN"
+    ? "/dashboard/technician-dashboard"
+    : "/dashboard/customer-dashboard";
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
@@ -65,8 +67,8 @@ const UserDropdown = ({ user }: UserDropdownProps) => {
           <DropdownMenuItem
             render={
               <Link
-                href="/dashboard"
-                className="flex w-full items-center gap-2"
+                href={dashboardPath}
+                className="flex w-full items-center gap-2 cursor-pointer"
               >
                 <LayoutDashboard size={18} />
                 Dashboard
@@ -74,29 +76,19 @@ const UserDropdown = ({ user }: UserDropdownProps) => {
             }
           />
 
-          <DropdownMenuItem
-            render={
-              <Link
-                href="/bookings"
-                className="flex w-full items-center gap-2"
-              >
-                <CalendarCheck size={18} />
-                My Bookings
-              </Link>
-            }
-          />
-
-          <DropdownMenuItem
-            render={
-              <Link
-                href={`/technician/${user.id}`}
-                className="flex w-full items-center gap-2"
-              >
-                <User size={18} />
-                Profile
-              </Link>
-            }
-          />
+          {user?.role === "TECHNICIAN" && (
+            <DropdownMenuItem
+              render={
+                <Link
+                  href={`/technician/${user.id}`}
+                  className="flex w-full items-center gap-2 cursor-pointer"
+                >
+                  <User size={18} />
+                  Profile
+                </Link>
+              }
+            />
+          )}
 
           <DropdownMenuSeparator />
 
