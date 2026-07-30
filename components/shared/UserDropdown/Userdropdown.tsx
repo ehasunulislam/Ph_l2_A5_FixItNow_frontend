@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LayoutDashboard, User} from "lucide-react";
+import { LayoutDashboard, User, WrenchOff} from "lucide-react";
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
@@ -83,17 +83,31 @@ const UserDropdown = ({ user }: UserDropdownProps) => {
           )}
 
           {user?.role === "TECHNICIAN" && (
-            <DropdownMenuItem
-              render={
-                <Link
-                  href={`/technician/${user.id}`}
-                  className="flex w-full items-center gap-2 cursor-pointer"
-                >
-                  <User size={18} />
-                  Profile
-                </Link>
-              }
-            />
+            <>
+              <DropdownMenuItem
+                render={
+                  <Link
+                    href={`/technician/${user.id}`}
+                    className="flex w-full items-center gap-2 cursor-pointer"
+                  >
+                    <User size={18} />
+                    Profile
+                  </Link>
+                }
+              />
+
+              <DropdownMenuItem
+                render={
+                  <Link
+                    href="/dashboard/technician/create-service"
+                    className="flex w-full items-center gap-2 cursor-pointer"
+                  >
+                    <WrenchOff size={18} />
+                    Create Service
+                  </Link>
+                }
+              />
+            </>
           )}
 
           <DropdownMenuSeparator />

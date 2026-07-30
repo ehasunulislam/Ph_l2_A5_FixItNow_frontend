@@ -21,15 +21,14 @@ const technicianProfilePage = async({params} : Props) => {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
             <div className="flex flex-col lg:flex-row gap-6">
                 <div className="flex-1">
-                <ProfileAbout technician={technician} />
+                  <ProfileAbout technician={technician} />
                 </div>
 
                 <div className="flex-1">
-                <ProfileReview technician={technician} />
+                  <ProfileReview technician={technician} />
                 </div>
             </div>
         </section>
-
     </div>
   )
 }
