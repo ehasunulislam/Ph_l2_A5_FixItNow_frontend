@@ -31,7 +31,7 @@ const About = ({ technician }: Props) => {
                 open={open}
                 setOpen={setOpen}
                 technician={technician}
-            />
+          />
         </div>
 
         <p className="leading-8 text-gray-300">

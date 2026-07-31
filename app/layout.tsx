@@ -17,7 +17,6 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode}>) {
   const user = await getCurrentUser();
 
-  console.log(user);
 
   return (
   <html

@@ -1,7 +1,10 @@
+"use client"
+
 import { Button } from '@/components/ui/button';
-import { BadgeCheck, MapPin } from 'lucide-react';
+import { BadgeCheck, MapPin, Pencil } from 'lucide-react';
 import Image from 'next/image';
-import React from 'react'
+import React, { useState } from 'react'
+import EditExperienceModal from './EditExperienceModal';
 
 interface Props {
   technician: {
@@ -19,6 +22,8 @@ interface Props {
 
 
 const ProfileHeader = ({ technician }: Props) => {
+  const [open, setOpen] = useState(false);
+
   return (
     <section className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
       <div className="mx-auto max-w-7xl px-6">
@@ -74,9 +79,22 @@ const ProfileHeader = ({ technician }: Props) => {
 
           {/* Right */}
           <div className="pb-4">
-            <Button className="h-12 rounded-xl bg-[#C93C3F] px-8 text-base hover:bg-[#b13336]">
+            <div className='text-white flex pb-5 justify-end'>
+                <Pencil
+                  className="cursor-pointer"
+                  onClick={() => setOpen(true)}
+                />
+            </div>
+
+            <Button className="h-12 rounded-xl bg-[#C93C3F] px-8 text-base hover:bg-[#b13336] cursor-pointer">
               Book Now
             </Button>
+
+            <EditExperienceModal
+              open={open}
+              setOpen={setOpen}
+              experience={technician.experience}
+            />
           </div>
         </div>
       </div>

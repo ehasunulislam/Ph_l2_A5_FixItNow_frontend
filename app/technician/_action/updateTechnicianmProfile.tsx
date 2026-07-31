@@ -7,6 +7,7 @@ export const updateTechnicianProfile = async (
     bio: string;
     location: string;
     hourlyRate: number;
+    experience: number;
   }
 ) => {
   const cookieStore = await cookies();
