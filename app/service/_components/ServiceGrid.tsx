@@ -1,7 +1,7 @@
 import { getAllServicesAction } from "../_action/getAllServicesAction";
 import ServiceCard from "./ServiceCard";
 
- interface IService {
+interface IService {
   id: string;
   technicianProfileId: string;
   categoryId: string;
@@ -33,6 +33,14 @@ import ServiceCard from "./ServiceCard";
       profileImage: string;
       address: string;
     };
+
+    availability: {
+      id: string;
+      date: string;
+      startTime: string;
+      endTime: string;
+      isBooked: boolean;
+    }[];
   };
 }
 

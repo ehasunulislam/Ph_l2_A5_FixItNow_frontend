@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Star, Clock } from "lucide-react";
+import { MapPin, Star, } from "lucide-react";
 
 interface Props {
   service: {
@@ -25,6 +25,14 @@ interface Props {
         name: string;
         profileImage: string;
       };
+
+      availability: {
+        id: string;
+        date: string;
+        startTime: string;
+        endTime: string;
+        isBooked: boolean;
+      }[];
     };
   };
 }
@@ -47,7 +55,7 @@ const ServiceCard = ({ service }: Props) => {
           {service.category.icon} {service.category.name}
         </span>
 
-        <h2 className="text-sm font-bold text-white">
+        <h2 className="text-sm font-bold  text-white">
           {service.title}
         </h2>
 
@@ -74,10 +82,14 @@ const ServiceCard = ({ service }: Props) => {
             <span>{service.technicianProfile.averageRating}</span>
           </div>
 
-          <div className="flex items-center gap-1">
+          {/* <div className="flex items-center gap-1">
             <Clock size={16} />
-            <span>{service.duration} hr</span>
-          </div>
+              <span>
+              {service.technicianProfile.availability.length > 0
+                ? service.technicianProfile.availability[0].startTime
+                : "No Slot"}
+            </span>
+          </div> */}
 
           <span className="font-semibold text-[#C93C3F]">
             ৳{service.price}
@@ -85,7 +97,7 @@ const ServiceCard = ({ service }: Props) => {
         </div>
 
         <Link
-          href={`/services/${service.id}`}
+          href={`/service/${service.id}`}
           className="block rounded-xl bg-[#C93C3F] py-3 text-center font-semibold text-white transition hover:bg-[#b83438]"
         >
           View Details
