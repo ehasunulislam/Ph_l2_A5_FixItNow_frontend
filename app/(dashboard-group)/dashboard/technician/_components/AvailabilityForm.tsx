@@ -24,8 +24,6 @@ const AvailabilityForm = () => {
       endTime,
     };
 
-    console.log(payload);
-
     const result = await createAvailabilityAction(payload);
 
     if (result.success) {

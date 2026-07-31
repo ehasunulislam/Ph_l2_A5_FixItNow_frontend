@@ -4,7 +4,6 @@ import AvailabilityList from "./AvailabilityList";
 
 const AvailabilitySection = async () => {
   const result = await getAvailabilityAction();
-  console.log(result);
 
   const availability = result.data.availability;
 
