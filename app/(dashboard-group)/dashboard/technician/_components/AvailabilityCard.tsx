@@ -1,9 +1,10 @@
 "use client";
 
 import { format } from "date-fns";
-import { Pencil, Trash2 } from "lucide-react";
+import { Pencil } from "lucide-react";
 import { useState } from "react";
 import EditAvailabilityModal from "./EditAvailabilityModal";
+import DeleteAvailabilityDialog from "./DeleteAvailabilityDialog";
 
 interface Props {
   slot: {
@@ -20,11 +21,8 @@ const AvailabilityCard = ({ slot }: Props) => {
 
   return (
     <div className="rounded-xl border border-white/10 bg-[#1d1d1d] p-5">
-
       <div className="flex items-center justify-between">
-
         <div>
-
           <h4 className="text-lg font-semibold text-white">
             {format(new Date(slot.date), "dd MMM yyyy")}
           </h4>
@@ -42,11 +40,9 @@ const AvailabilityCard = ({ slot }: Props) => {
           >
             {slot.isBooked ? "Booked" : "Available"}
           </span>
-
         </div>
 
         <div className="flex gap-3">
-
          <button
               onClick={() => setOpen(true)}
               className="rounded-lg bg-blue-500/20 p-3 text-blue-400 cursor-pointer"
@@ -60,14 +56,11 @@ const AvailabilityCard = ({ slot }: Props) => {
             slot={slot}
           />
 
-          <button className="rounded-lg bg-red-500/20 p-3 text-red-400 hover:bg-red-500/30 transition cursor-pointer">
-            <Trash2 size={18} />
-          </button>
-
+          <DeleteAvailabilityDialog
+            id={slot.id}
+          />
         </div>
-
       </div>
-
     </div>
   );
 };
