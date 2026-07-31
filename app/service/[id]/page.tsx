@@ -1,4 +1,6 @@
+import { getCurrentUser } from "@/app/(auth)/_action/getCurrentUser";
 import { getServiceByIdAction } from "../_action/getSingleServiceAction";
+
 import BookingCard from "../_components/BookingCard";
 import ServiceDetailsHero from "../_components/ServiceDetailsHero";
 import TechnicianCard from "../_components/TechnicianCard";
@@ -14,18 +16,26 @@ const ServiceDetailsPage = async ({ params }: Props) => {
 
   const result = await getServiceByIdAction(id);
 
-  const service = result.data;
+  const userResult = await getCurrentUser();
 
+  const service = result.data;
+  const user = userResult;
+  
   return (
     <section className="max-w-7xl mx-auto px-5 py-10">
       <ServiceDetailsHero service={service} />
 
       <div className="grid lg:grid-cols-3 gap-8 mt-10">
         <div className="lg:col-span-2">
-          <TechnicianCard technician={service.technicianProfile} />
+          <TechnicianCard
+            technician={service.technicianProfile}
+          />
         </div>
 
-        <BookingCard service={service} />
+        <BookingCard
+          service={service}
+          user={user}
+        />
       </div>
     </section>
   );
