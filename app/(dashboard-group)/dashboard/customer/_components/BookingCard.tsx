@@ -24,7 +24,7 @@ const BookingCard = ({ booking }: Props) => {
       <div className="mt-6 flex items-center gap-4">
         <Image
           src={booking.technicianProfile.user.profileImage}
-          alt=""
+          alt="technician profile"
           width={40}
           height={40}
           className="h-20 w-20 rounded-full object-cover"
@@ -61,28 +61,32 @@ const BookingCard = ({ booking }: Props) => {
           ৳{booking.service.price}
         </span>
 
-        <span
-          className={`rounded-full px-4 py-1 text-sm font-medium
-
-          ${
-            booking.status === "REQUESTED" && "bg-yellow-500/20 text-yellow-400"
-          }
-
-          ${booking.status === "ACCEPTED" && "bg-blue-500/20 text-blue-400"}
-
-          ${booking.status === "PAID" && "bg-green-500/20 text-green-400"}
-
-          ${
-            booking.status === "COMPLETED" &&
-            "bg-emerald-500/20 text-emerald-400"
-          }
-
-          ${booking.status === "DECLINED" && "bg-red-500/20 text-red-400"}
-
-          `}
-        >
-          {booking.status}
-        </span>
+        {booking.status === "ACCEPTED" ? (
+          <Link
+            href={`/dashboard/customer/bookings/${booking.id}/pay`}
+            className="rounded-full bg-blue-500/20 px-4 py-1 text-sm font-medium text-blue-400 hover:bg-blue-500/30 transition"
+          >
+            {booking.status}
+          </Link>
+        ) : (
+          <span
+            className={`rounded-full px-4 py-1 text-sm font-medium
+        ${
+          booking.status === "REQUESTED"
+            ? "bg-yellow-500/20 text-yellow-400"
+            : booking.status === "PAID"
+              ? "bg-green-500/20 text-green-400"
+              : booking.status === "COMPLETED"
+                ? "bg-emerald-500/20 text-emerald-400"
+                : booking.status === "DECLINED"
+                  ? "bg-red-500/20 text-red-400"
+                  : "bg-gray-500/20 text-gray-400"
+        }
+      `}
+          >
+            {booking.status}
+          </span>
+        )}
       </div>
 
       <div className="mt-8">
@@ -95,7 +99,7 @@ const BookingCard = ({ booking }: Props) => {
         {booking.status === "ACCEPTED" && (
           <Link
             href={`/dashboard/customer/bookings/${booking.id}/pay`}
-            className="block rounded-xl bg-[#C93C3F] py-3 text-center font-semibold text-white"
+            className="block rounded-xl bg-[#54c93c8e] py-3 text-center font-semibold text-white"
           >
             Proceed to Payment
           </Link>

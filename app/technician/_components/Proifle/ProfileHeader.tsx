@@ -1,6 +1,5 @@
 "use client"
 
-import { Button } from '@/components/ui/button';
 import { BadgeCheck, MapPin, Pencil } from 'lucide-react';
 import Image from 'next/image';
 import React, { useState } from 'react'
@@ -85,10 +84,6 @@ const ProfileHeader = ({ technician }: Props) => {
                   onClick={() => setOpen(true)}
                 />
             </div>
-
-            <Button className="h-12 rounded-xl bg-[#C93C3F] px-8 text-base hover:bg-[#b13336] cursor-pointer">
-              Book Now
-            </Button>
 
             <EditExperienceModal
               open={open}
