@@ -70,7 +70,7 @@ export default function Features() {
             {features.map((feature, index) => {
               const Icon = feature.icon
               return (
-                <div key={index} className="border border-gray-500 rounded-[50px] p-6 hover:border-accent transition-colors">
+                <div key={index} className="border border-gray-500 rounded-[35px] p-6 hover:border-accent transition-colors">
                   <Icon className="w-6 h-6 text-[#C93C3F] mb-4" />
                   <h3 className="text-white font-semibold mb-2">
                     {feature.title}
