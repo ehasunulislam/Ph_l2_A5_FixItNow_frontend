@@ -5,7 +5,7 @@ export const getAllServicesAction = async () => {
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/services`,
     {
       next: {
-        revalidate: 60,
+        revalidate: 10,
       },
     }
   );
