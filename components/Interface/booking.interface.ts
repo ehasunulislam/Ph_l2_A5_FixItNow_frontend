@@ -37,4 +37,11 @@ export interface IBooking {
     startTime: string;
     endTime: string;
   };
+
+  review: {
+    id: string;
+    rating: number;
+    comment: string;
+  } | null;
+
 }

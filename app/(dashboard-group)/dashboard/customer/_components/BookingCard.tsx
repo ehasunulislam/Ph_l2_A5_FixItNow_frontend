@@ -3,6 +3,7 @@ import Link from "next/link";
 import { format } from "date-fns";
 import { Calendar, Clock, MapPin } from "lucide-react";
 import { IBooking } from "@/components/Interface/booking.interface";
+import ReviewModal from "../reviews/_components/ReviewModal";
 
 interface Props {
   booking: IBooking;
@@ -112,9 +113,16 @@ const BookingCard = ({ booking }: Props) => {
         )}
 
         {booking.status === "COMPLETED" && (
-          <button className="w-full rounded-xl bg-[#C93C3F] py-3 font-semibold text-white">
-            Leave Review
-          </button>
+          booking.review ? (
+            <button
+              disabled
+              className="w-full cursor-not-allowed rounded-xl bg-green-600/20 py-3 font-semibold text-green-400 opacity-80"
+            >
+              ✅ Review Submitted
+            </button>
+          ) : (
+            <ReviewModal bookingId={booking.id} />
+          )
         )}
 
         {booking.status === "DECLINED" && (
