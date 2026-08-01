@@ -4,6 +4,7 @@ import { Calendar, Clock, MapPin, Phone } from "lucide-react";
 import { ITechnicianBooking } from "@/components/Interface/technician-booking.interface";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import BookingStatusBadge from "./BookingStatusBadge";
+import UpdateBookingStatus from "./UpdateBookingStatus";
 
 interface Props {
   booking: ITechnicianBooking;
@@ -14,9 +15,9 @@ const TechnicianBookingCard = ({ booking }: Props) => {
     <div className="rounded-2xl border border-white/10 bg-[#181818] p-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-            <Avatar className="h-10 w-10 border border-white/10">
-              <AvatarImage src={booking.customer.profileImage || ""} />
-            </Avatar>
+          <Avatar className="h-10 w-10 border border-white/10">
+            <AvatarImage src={booking.customer.profileImage || ""} />
+          </Avatar>
 
           <div>
             <h3 className="text-xl font-semibold text-white">
@@ -27,7 +28,9 @@ const TechnicianBookingCard = ({ booking }: Props) => {
           </div>
         </div>
 
-        <BookingStatusBadge status={booking.status} />
+        <div>
+            <BookingStatusBadge status={booking.status} />
+        </div>
       </div>
 
       <div className="mt-6 grid gap-3 md:grid-cols-2">
@@ -72,6 +75,11 @@ const TechnicianBookingCard = ({ booking }: Props) => {
           <p className="mt-2 text-white">{booking.note}</p>
         </div>
       )}
+
+      <section className="flex justify-end">
+            {/* update booking status */}
+            <UpdateBookingStatus  bookingId={booking.id} status={booking.status} />
+      </section>
     </div>
   );
 };
