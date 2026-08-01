@@ -27,12 +27,13 @@ export function Navbar({
   navItems = [
     { label: 'Home', href: '/' },
     { label: 'Services', href: '/service' },
+    { label: 'Trust & Safety', href: '/trust-safety' },
   ],
 }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="sticky top-0 z-50">
+    <nav className="sticky top-0 z-50 bg-[#000000bb]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
