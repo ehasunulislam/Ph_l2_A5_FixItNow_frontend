@@ -9,6 +9,7 @@ interface Props {
     bio: string | null;
     location: string;
     hourlyRate: string;
+    experience: string;
   };
 }
 

@@ -19,11 +19,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { updateTechnicianProfile } from "../../_action/updateTechnicianmProfile";
 
-
 const profileSchema = z.object({
   bio: z.string().min(10, "Bio must be at least 10 characters"),
   location: z.string().min(2, "Location is required"),
   hourlyRate: z.number().min(0, "Hourly rate must be positive"),
+  experience: z.number().min(0, "Experience must be positive"),
 });
 
 type FormValues = z.infer<typeof profileSchema>;
@@ -36,6 +36,7 @@ interface Props {
     bio: string | null;
     location: string;
     hourlyRate: string;
+    experience: string;
   };
 }
 
@@ -43,12 +44,17 @@ const EditProfileModal = ({ open, setOpen, technician }: Props) => {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
-  const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>({
     resolver: zodResolver(profileSchema),
     defaultValues: {
       bio: technician.bio ?? "",
       location: technician.location ?? "",
       hourlyRate: Number(technician.hourlyRate),
+      experience: Number(technician.experience)
     },
   });
 
@@ -77,15 +83,10 @@ const EditProfileModal = ({ open, setOpen, technician }: Props) => {
           <DialogTitle>Edit Technician Profile</DialogTitle>
         </DialogHeader>
 
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="space-y-5"
-        >
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           {/* Bio */}
           <div>
-            <label className="mb-2 block text-sm font-medium">
-              Bio
-            </label>
+            <label className="mb-2 block text-sm font-medium">Bio</label>
 
             <Textarea
               rows={5}
@@ -94,22 +95,15 @@ const EditProfileModal = ({ open, setOpen, technician }: Props) => {
             />
 
             {errors.bio && (
-              <p className="mt-1 text-sm text-red-500">
-                {errors.bio.message}
-              </p>
+              <p className="mt-1 text-sm text-red-500">{errors.bio.message}</p>
             )}
           </div>
 
           {/* Location */}
           <div>
-            <label className="mb-2 block text-sm font-medium">
-              Location
-            </label>
+            <label className="mb-2 block text-sm font-medium">Location</label>
 
-            <Input
-              placeholder="Dhaka"
-              {...register("location")}
-            />
+            <Input placeholder="Dhaka" {...register("location")} />
 
             {errors.location && (
               <p className="mt-1 text-sm text-red-500">
