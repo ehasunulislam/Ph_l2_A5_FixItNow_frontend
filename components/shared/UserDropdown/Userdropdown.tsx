@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LayoutDashboard, User, WrenchOff} from "lucide-react";
+import { Book, LayoutDashboard, User, WrenchOff} from "lucide-react";
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
@@ -104,6 +104,19 @@ const UserDropdown = ({ user }: UserDropdownProps) => {
                   >
                     <WrenchOff size={18} />
                     Create Service
+                  </Link>
+                }
+              />
+
+
+              <DropdownMenuItem
+                render={
+                  <Link
+                    href="/dashboard/technician/bookings"
+                    className="flex w-full items-center gap-2 cursor-pointer"
+                  >
+                    <Book size={18} />
+                    Bookings
                   </Link>
                 }
               />

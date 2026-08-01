@@ -43,7 +43,10 @@ const DeleteAvailabilityDialog = ({ id }: Props) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger>
-        <button className="rounded-lg bg-red-500/20 p-3 text-red-400 hover:bg-red-500/30 transition cursor-pointer">
+        <button
+          type="button"
+          className="rounded-lg bg-red-500/20 p-3 text-red-400 hover:bg-red-500/30 transition cursor-pointer"
+        >
           <Trash2 size={18} />
         </button>
       </AlertDialogTrigger>
