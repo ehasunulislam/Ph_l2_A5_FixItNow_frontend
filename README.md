@@ -241,16 +241,6 @@ npm run dev
 
 ---
 
-# 🔑 Environment Variables
-
-Create a `.env` file
-
-```env
-NEXT_PUBLIC_BACKEND_URL=https://fixitnow-xi.vercel.app
-```
-
----
-
 # 🌍 Backend API
 
 ```
@@ -287,11 +277,11 @@ https://fixitnow-xi.vercel.app
 
 **Ehasun Ul Islam**
 
-GitHub: https://github.com/your-github
+GitHub: https://github.com/ehasunulislam
 
-Portfolio: https://your-portfolio.com
+Portfolio: https://ehasun.com/
 
-LinkedIn: https://linkedin.com/in/your-profile
+LinkedIn: https://www.linkedin.com/in/ehasun/
 
 ---
 
